@@ -22,7 +22,6 @@ import roop.globals
 import roop.metadata
 import roop.utilities as util
 import roop.util_ffmpeg as ffmpeg
-import ui.main as main
 from settings import Settings
 from roop.face_util import extract_face_images
 from roop.ProcessEntry import ProcessEntry

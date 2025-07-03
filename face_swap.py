@@ -8,8 +8,8 @@ from roop.face_util import get_all_faces
 from settings import Settings
 
 # --- CONFIG ---
-SOURCE_IMAGE = 'generated-image-1751523846113.jpg'  # The face to swap in
-TARGET_IMAGE = 'easyPreview_temp_yfmvi_00001_.png'  # The image to swap face in
+SOURCE_IMAGE = 'source.jpg'  # The face to swap in
+TARGET_IMAGE = 'target.jpg'  # The image to swap face in
 OUTPUT_IMAGE = 'output.jpg'  # The result
 
 # --- 1. Load images ---

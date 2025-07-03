@@ -135,8 +135,7 @@ def replace_template(file_path: str, index: int = 0) -> str:
         template, {"index": str(index), "file": fn}
     )
 
-    output_path = roop.globals.output_path or "."
-    return os.path.join(output_path, f"{replaced_filename}{ext}")
+    return os.path.join(roop.globals.output_path, f"{replaced_filename}{ext}")
 
 
 def create_temp(target_path: str) -> None:
@@ -212,7 +211,7 @@ def conditional_download(download_directory_path: str, urls: List[str]) -> None:
 
 def get_local_files_from_folder(folder: str) -> List[str]:
     if not os.path.exists(folder) or not os.path.isdir(folder):
-        return []
+        return None
     files = [
         os.path.join(folder, f)
         for f in os.listdir(folder)
@@ -254,7 +253,7 @@ def str_to_class(module_name, class_name) -> Any:
     return class_
 
 def is_installed(name:str) -> bool:
-    return bool(shutil.which(name))
+    return shutil.which(name);
 
 # Taken from https://stackoverflow.com/a/68842705
 def get_platform() -> str:
@@ -277,7 +276,7 @@ def open_with_default_app(filename:str):
     elif platform == "wsl":
         subprocess.call("cmd.exe /C start".split() + [filename])
     else:  # linux variants
-        subprocess.call(["xdg-open", filename])
+        subprocess.call("xdg-open", filename)
 
 
 def prepare_for_batch(target_files) -> str:
@@ -334,6 +333,8 @@ def create_version_html() -> str:
 python: <span title="{sys.version}">{python_version}</span>
 •
 torch: {getattr(torch, '__long_version__',torch.__version__)}
+•
+gradio: {gradio.__version__}
 """
     return versions_html
 
